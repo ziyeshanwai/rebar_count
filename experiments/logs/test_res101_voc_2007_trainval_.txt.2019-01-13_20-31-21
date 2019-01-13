@@ -1,0 +1,620 @@
++ echo Logging output to experiments/logs/test_res101_voc_2007_trainval_.txt.2019-01-13_20-31-21
+Logging output to experiments/logs/test_res101_voc_2007_trainval_.txt.2019-01-13_20-31-21
++ set +x
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/test_net.py --imdb voc_2007_test --model output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_80000.ckpt --cfg experiments/cfgs/res101.yml --net res101 --set ANCHOR_SCALES '[2,4,8]' ANCHOR_RATIOS '[0.5,1,2]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/res101.yml', comp_mode=False, imdb_name='voc_2007_test', max_per_image=50, model='output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_80000.ckpt', net='res101', set_cfgs=['ANCHOR_SCALES', '[2,4,8]', 'ANCHOR_RATIOS', '[0.5,1,2]'], tag='')
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [2, 4, 8],
+ 'DATA_DIR': '/home/spaci/LiyouWang/tf-faster-rcnn-featuremap-count/data',
+ 'EXP_DIR': 'res101',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/home/spaci/LiyouWang/tf-faster-rcnn-featuremap-count',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1200,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 1000,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [900],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1200,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [900],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_E2E_TF': True,
+ 'USE_GPU_NMS': True}
+2019-01-13 20:31:25.036762: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-13 20:31:25.036783: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-13 20:31:25.036789: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-13 20:31:25.036793: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-13 20:31:25.036798: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2019-01-13 20:31:25.160623: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-01-13 20:31:25.161092: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:01:00.0
+Total memory: 10.91GiB
+Free memory: 10.35GiB
+2019-01-13 20:31:25.161104: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-01-13 20:31:25.161109: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-01-13 20:31:25.161115: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0)
+获取特征图 Tensor("resnet_v1_101_2/block2/unit_4/bottleneck_v1/Relu:0", shape=(1, ?, ?, 512), dtype=float32)
+Loading model check point from output/res101/voc_2007_trainval/default/res101_faster_rcnn_iter_80000.ckpt
+Loaded.
+image_thresh is 1.0
+im_detect: 1/250 1.454s 0.001s
+image_thresh is 1.0
+im_detect: 2/250 0.984s 0.001s
+image_thresh is 1.0
+im_detect: 3/250 0.827s 0.001s
+image_thresh is 1.0
+im_detect: 4/250 0.749s 0.001s
+image_thresh is 1.0
+im_detect: 5/250 0.702s 0.001s
+image_thresh is 1.0
+im_detect: 6/250 0.670s 0.001s
+image_thresh is 1.0
+im_detect: 7/250 0.648s 0.001s
+image_thresh is 1.0
+im_detect: 8/250 0.631s 0.001s
+image_thresh is 1.0
+im_detect: 9/250 0.617s 0.001s
+image_thresh is 1.0
+im_detect: 10/250 0.607s 0.001s
+image_thresh is 1.0
+im_detect: 11/250 0.599s 0.001s
+image_thresh is 1.0
+im_detect: 12/250 0.591s 0.001s
+image_thresh is 1.0
+im_detect: 13/250 0.585s 0.001s
+image_thresh is 1.0
+im_detect: 14/250 0.580s 0.001s
+image_thresh is 1.0
+im_detect: 15/250 0.575s 0.001s
+image_thresh is 1.0
+im_detect: 16/250 0.572s 0.001s
+image_thresh is 1.0
+im_detect: 17/250 0.568s 0.001s
+image_thresh is 1.0
+im_detect: 18/250 0.565s 0.001s
+image_thresh is 1.0
+im_detect: 19/250 0.563s 0.001s
+image_thresh is 1.0
+im_detect: 20/250 0.560s 0.001s
+image_thresh is 1.0
+im_detect: 21/250 0.558s 0.001s
+image_thresh is 1.0
+im_detect: 22/250 0.556s 0.001s
+image_thresh is 1.0
+im_detect: 23/250 0.554s 0.001s
+image_thresh is 1.0
+im_detect: 24/250 0.559s 0.001s
+image_thresh is 1.0
+im_detect: 25/250 0.557s 0.001s
+image_thresh is 1.0
+im_detect: 26/250 0.555s 0.001s
+image_thresh is 1.0
+im_detect: 27/250 0.554s 0.001s
+image_thresh is 1.0
+im_detect: 28/250 0.552s 0.001s
+image_thresh is 1.0
+im_detect: 29/250 0.551s 0.001s
+image_thresh is 1.0
+im_detect: 30/250 0.550s 0.001s
+image_thresh is 1.0
+im_detect: 31/250 0.548s 0.001s
+image_thresh is 1.0
+im_detect: 32/250 0.547s 0.001s
+image_thresh is 1.0
+im_detect: 33/250 0.546s 0.001s
+image_thresh is 1.0
+im_detect: 34/250 0.546s 0.001s
+image_thresh is 1.0
+im_detect: 35/250 0.545s 0.001s
+image_thresh is 1.0
+im_detect: 36/250 0.544s 0.001s
+image_thresh is 1.0
+im_detect: 37/250 0.543s 0.001s
+image_thresh is 1.0
+im_detect: 38/250 0.542s 0.001s
+image_thresh is 1.0
+im_detect: 39/250 0.542s 0.001s
+image_thresh is 1.0
+im_detect: 40/250 0.541s 0.001s
+image_thresh is 1.0
+im_detect: 41/250 0.540s 0.001s
+image_thresh is 1.0
+im_detect: 42/250 0.540s 0.001s
+image_thresh is 1.0
+im_detect: 43/250 0.539s 0.001s
+image_thresh is 1.0
+im_detect: 44/250 0.539s 0.001s
+image_thresh is 1.0
+im_detect: 45/250 0.538s 0.001s
+image_thresh is 1.0
+im_detect: 46/250 0.538s 0.001s
+image_thresh is 1.0
+im_detect: 47/250 0.537s 0.001s
+image_thresh is 1.0
+im_detect: 48/250 0.537s 0.001s
+image_thresh is 1.0
+im_detect: 49/250 0.536s 0.001s
+image_thresh is 1.0
+im_detect: 50/250 0.536s 0.001s
+image_thresh is 1.0
+im_detect: 51/250 0.536s 0.001s
+image_thresh is 1.0
+im_detect: 52/250 0.535s 0.001s
+image_thresh is 1.0
+im_detect: 53/250 0.535s 0.001s
+image_thresh is 1.0
+im_detect: 54/250 0.534s 0.001s
+image_thresh is 1.0
+im_detect: 55/250 0.534s 0.001s
+image_thresh is 1.0
+im_detect: 56/250 0.534s 0.001s
+image_thresh is 1.0
+im_detect: 57/250 0.533s 0.001s
+image_thresh is 1.0
+im_detect: 58/250 0.533s 0.001s
+image_thresh is 1.0
+im_detect: 59/250 0.533s 0.001s
+image_thresh is 1.0
+im_detect: 60/250 0.532s 0.001s
+image_thresh is 1.0
+im_detect: 61/250 0.532s 0.001s
+image_thresh is 1.0
+im_detect: 62/250 0.532s 0.001s
+image_thresh is 1.0
+im_detect: 63/250 0.532s 0.001s
+image_thresh is 1.0
+im_detect: 64/250 0.531s 0.001s
+image_thresh is 1.0
+im_detect: 65/250 0.531s 0.001s
+image_thresh is 1.0
+im_detect: 66/250 0.531s 0.001s
+image_thresh is 1.0
+im_detect: 67/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 68/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 69/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 70/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 71/250 0.530s 0.001s
+image_thresh is 1.4385480426426511e-05
+im_detect: 72/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 73/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 74/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 75/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 76/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 77/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 78/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 79/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 80/250 0.530s 0.001s
+image_thresh is 2.352333694943809e-06
+im_detect: 81/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 82/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 83/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 84/250 0.529s 0.001s
+image_thresh is 5.489716841111658e-07
+im_detect: 85/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 86/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 87/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 88/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 89/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 90/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 91/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 92/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 93/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 94/250 0.530s 0.001s
+image_thresh is 1.0
+im_detect: 95/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 96/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 97/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 98/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 99/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 100/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 101/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 102/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 103/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 104/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 105/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 106/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 107/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 108/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 109/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 110/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 111/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 112/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 113/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 114/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 115/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 116/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 117/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 118/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 119/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 120/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 121/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 122/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 123/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 124/250 0.528s 0.001s
+image_thresh is 2.5260790152970003e-06
+im_detect: 125/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 126/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 127/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 128/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 129/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 130/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 131/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 132/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 133/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 134/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 135/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 136/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 137/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 138/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 139/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 140/250 0.528s 0.001s
+image_thresh is 0.00023884758411440998
+im_detect: 141/250 0.528s 0.001s
+image_thresh is 1.3135246490492136e-06
+im_detect: 142/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 143/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 144/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 145/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 146/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 147/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 148/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 149/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 150/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 151/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 152/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 153/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 154/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 155/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 156/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 157/250 0.528s 0.001s
+image_thresh is 3.365662735177466e-07
+im_detect: 158/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 159/250 0.528s 0.001s
+image_thresh is 0.01727248914539814
+im_detect: 160/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 161/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 162/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 163/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 164/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 165/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 166/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 167/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 168/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 169/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 170/250 0.529s 0.001s
+image_thresh is 8.92065236257622e-06
+im_detect: 171/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 172/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 173/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 174/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 175/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 176/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 177/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 178/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 179/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 180/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 181/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 182/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 183/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 184/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 185/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 186/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 187/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 188/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 189/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 190/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 191/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 192/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 193/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 194/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 195/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 196/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 197/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 198/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 199/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 200/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 201/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 202/250 0.528s 0.001s
+image_thresh is 7.853356578380044e-07
+im_detect: 203/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 204/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 205/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 206/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 207/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 208/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 209/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 210/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 211/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 212/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 213/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 214/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 215/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 216/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 217/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 218/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 219/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 220/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 221/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 222/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 223/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 224/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 225/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 226/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 227/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 228/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 229/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 230/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 231/250 0.528s 0.001s
+image_thresh is 9.918857131197e-07
+im_detect: 232/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 233/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 234/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 235/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 236/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 237/250 0.528s 0.001s
+image_thresh is 1.278668719351117e-06
+im_detect: 238/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 239/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 240/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 241/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 242/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 243/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 244/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 245/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 246/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 247/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 248/250 0.528s 0.001s
+image_thresh is 1.0
+im_detect: 249/250 0.529s 0.001s
+image_thresh is 1.0
+im_detect: 250/250 0.528s 0.001s
+Evaluating detections
+Writing rebar VOC results file
+VOC07 metric? Yes
+AP for rebar = 0.9005
+Mean AP = 0.9005
+~~~~~~~~
+Results:
+0.901
+0.901
+~~~~~~~~
+
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+Recompute with `./tools/reval.py --matlab ...` for your paper.
+-- Thanks, The Management
+--------------------------------------------------------------
+114.48user 16.51system 2:39.45elapsed 82%CPU (0avgtext+0avgdata 1732176maxresident)k
+3096inputs+4392outputs (0major+4286184minor)pagefaults 0swaps
